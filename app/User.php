@@ -50,4 +50,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Suggestion::class);
     }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getAvatarPath()
+    {
+        return asset('/' . config('settings.avatar_path') . '/' . $this->avatar);
+    }
 }

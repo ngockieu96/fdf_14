@@ -8,10 +8,19 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ trans('label.app_name') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    {!! Html::style('css/app.css') !!}
+
+      <!-- Bootstrap CSS -->
+    {!! Html::style('bower/bootstrap/dist/css/bootstrap.min.css') !!}
+
+    <!-- Bootstrap theme CSS -->
+    {!! Html::style('bower/bootstrap/dist/css/bootstrap-theme.min.css') !!}
+
+    <!-- Bootstrap datatable CSS -->
+    {!! Html::style('bower/datatables.net-bs/css/dataTables.bootstrap.min.css') !!}
 
     <!-- Scripts -->
     <script>
@@ -35,7 +44,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ trans('label.app_name') }}
                 </a>
             </div>
 
@@ -49,8 +58,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/login') }}"> {{ trans('label.login') }} </a></li>
+                        <li><a href="{{ url('/register') }}"> {{ trans('label.register') }} </a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -62,7 +71,7 @@
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Logout
+                                        {{ trans('label.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -81,5 +90,17 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+
+    <!-- jQuery -->
+    {!! Html::script('/bower/jquery/dist/jquery.min.js') !!}
+
+    <!-- Bootstrap Core JavaScript -->
+    {!! Html::script('/bower/bootstrap/dist/js/bootstrap.min.js') !!}
+
+    <!-- jQuery Datatable JavaScript -->
+    {!! Html::script('/bower/datatables.net/js/jquery.dataTables.min.js') !!}
+
+    <!-- Bootstrap Datatable JavaScript -->
+    {!! Html::script('/bower/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}
 </body>
 </html>
