@@ -44,6 +44,19 @@
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                     {{ trans('label.forgot_password') }}
                                 </a>
+                                <p>
+                                    <a class="btn btn-link" href="{{ url('redirect/facebook') }}">
+                                        <span class="fa fa-facebook"></span> {{ trans('auth.facebook_login') }}
+                                    </a>
+
+                                    <a class="btn btn-link" href="{{ url('redirect/twitter') }}">
+                                        <span class="fa fa-twitter"></span> {{ trans('auth.twitter_login') }}
+                                    </a>
+
+                                    <a class="btn btn-link" href="{{ url('redirect/google') }}">
+                                        <span class="fa fa-google"></span> {{ trans('auth.google_login') }}
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     {{ Form::close() }}
