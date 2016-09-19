@@ -21,3 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/redirect/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('/callback/{provider}', 'SocialAuthController@handleProviderCallback');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
+    Route::resource('category', 'Admin\CategoryController');
+});

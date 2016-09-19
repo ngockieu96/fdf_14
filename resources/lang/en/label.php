@@ -2,6 +2,10 @@
 
 return [
     'app_name' => 'Food And Drink',
+    'user' => 'User',
+    'category' => 'Category',
+    'product' => 'Product',
+    'order' => 'Order',
     'email' => 'Email',
     'password' => 'Password',
     'confirm_password' => 'Confirm Password',
@@ -15,5 +19,6 @@ return [
     'forgot_password' => 'Forgot Your Password?',
     'remember' => 'Remember me',
     'register' => 'Register',
+    'confirm_delete' => 'Are you sure?',
 
 ];

@@ -18,6 +18,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    const IS_ADMIN = 1;
+
     protected $fillable = [
         'name',
         'email',
@@ -49,6 +51,11 @@ class User extends Authenticatable
     public function suggestions()
     {
         return $this->hasMany(Suggestion::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role == User::IS_ADMIN;
     }
 
     public function setPasswordAttribute($value)

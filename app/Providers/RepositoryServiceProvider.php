@@ -5,6 +5,8 @@ use Illuminate\Support\ServiceProvider;
 use App;
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Category\CategoryRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -25,5 +27,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         App::bind(UserRepositoryInterface::class, UserRepository::class);
+        App::bind(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
 }
