@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Category\CategoryRepositoryInterface;
@@ -30,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
 
@@ -39,9 +40,15 @@ class CategoryController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        //
+        $input = $request->only('name', 'description');
+
+        if ($this->categoryRepository->create($input)) {
+            return redirect()->route('category.index')->with('success', trans('category.create_category_successfully'));
+        }
+
+        return redirect()->route('category.index')->with('errors', trans('category.create_category_fail'));
     }
 
     /**
