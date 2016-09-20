@@ -13,6 +13,8 @@
     <!-- Styles -->
     {!! Html::style('css/app.css') !!}
 
+    {!! Html::style('css/user.css') !!}
+
       <!-- Bootstrap CSS -->
     {!! Html::style('bower/bootstrap/dist/css/bootstrap.min.css') !!}
 
@@ -67,6 +69,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ URL::action('User\UsersController@index') }}">{{ trans('label.profile') }}</a></li>
+                                <li>
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();

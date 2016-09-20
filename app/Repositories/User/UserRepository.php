@@ -51,6 +51,29 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         return $createUser;
     }
 
+    public function update($inputs, $id)
+    {
+        try {
+            if (!empty($inputs['password'])) {
+                $inputs['password'] = bcrypt($inputs['password']);
+            } else {
+                unset($inputs['password']);
+            }
+
+            if (!empty($inputs['avatar'])) {
+                $inputs['avatar'] = $this->uploadAvatar($inputs['avatar']);
+            } else {
+                unset($inputs['avatar']);
+            }
+
+            $data = $this->model->where('id', $id)->update($inputs);
+        } catch (Exception $e) {
+            return view('user.home')->withError(trans('message.update_error'));
+        }
+
+        return $data;
+    }
+
     public function uploadAvatar($oldImage = null)
     {
         $file = Input::file('avatar');

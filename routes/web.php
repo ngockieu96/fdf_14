@@ -25,3 +25,10 @@ Route::get('/callback/{provider}', 'SocialAuthController@handleProviderCallback'
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
     Route::resource('category', 'Admin\CategoryController');
 });
+
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()
+{
+    Route::resource('profile', 'User\UsersController', [
+         'only' => ['index', 'update']
+     ]);
+});
