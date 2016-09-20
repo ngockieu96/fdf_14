@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Category\CategoryRepositoryInterface;
@@ -70,7 +71,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-       //
+        $category = $this->categoryRepository->find($id);
+
+        if (!$category) {
+            return redirect()->route('category.index')->with('errors', trans('category.category_not_found'));
+        }
+
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -79,9 +86,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateCategoryRequest $request)
     {
-        //
+        $input = $request->only('name', 'description');
+
+        if ($this->categoryRepository->update($input, $id)) {
+            return redirect()->route('category.index')->with('success', trans('category.update_category_successfully'));
+        }
+
+        return redirect()->route('category.index')->with('errors', trans('category.update_category_fail'));
     }
 
     /**
