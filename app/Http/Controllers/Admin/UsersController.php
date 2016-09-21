@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\User\UserRepositoryInterface;
@@ -30,7 +31,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -38,9 +39,15 @@ class UsersController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        $input = $request->only('name', 'email', 'avatar', 'password', 'phone', 'address');
+
+        if ($this->userRepository->register($input)) {
+            return redirect()->route('user.index')->with('success', trans('user.create_user_successfully'));
+        }
+
+        return redirect()->route('user.index')->with('errors', trans('user.create_user_fail'));
     }
 
     /**
