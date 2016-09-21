@@ -7,6 +7,7 @@
         <th>{{ trans('user.address') }}</th>
         <th>{{ trans('user.role') }}</th>
         <th>{{ trans('user.avatar') }}</th>
+        <th>{{ trans('user.action') }}</th>
     </thead>
     <tbody>
     @foreach ($users as $user)
@@ -18,6 +19,13 @@
             <td>{{ $user->address }}</td>
             <td>{{ $user->role ? trans('user.admin') : trans('user.user') }} </td>
             <td><img src="{{  $user->getAvatarPath() }}" class="img-admin"></span></td>
+            <td>
+                <div class='btn-group'>
+                    @if (auth()->user()->id == $user->id || !$user->isAdmin())
+                        <a href="{!! route('user.edit', [$user->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    @endif
+                </div>
+            </td>
         </tr>
     @endforeach
     </tbody>
