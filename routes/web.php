@@ -25,6 +25,7 @@ Route::get('/callback/{provider}', 'SocialAuthController@handleProviderCallback'
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
     Route::resource('category', 'Admin\CategoryController');
     Route::resource('user', 'Admin\UsersController');
+    Route::resource('product', 'Admin\ProductController');
 });
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()

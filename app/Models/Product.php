@@ -39,4 +39,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getImagePath()
+    {
+        return asset('/' . config('settings.image_path') . '/' . $this->image);
+    }
 }

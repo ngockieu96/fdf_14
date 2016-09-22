@@ -40,6 +40,9 @@
                     <li>
                         <a href="{{ url('/admin/user') }}">{{ trans('label.user') }}</a>
                     </li>
+                    <li>
+                        <a href="{{ url('/admin/product') }}">{{ trans('label.product') }}</a>
+                    </li>
                 </ul>
             </div>
         </nav>
