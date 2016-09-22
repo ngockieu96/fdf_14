@@ -20,11 +20,17 @@
             <td>{{ $user->role ? trans('user.admin') : trans('user.user') }} </td>
             <td><img src="{{  $user->getAvatarPath() }}" class="img-admin"></span></td>
             <td>
+                {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
+                    <a href="{!! route('user.show', [$user->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     @if (auth()->user()->id == $user->id || !$user->isAdmin())
                         <a href="{!! route('user.edit', [$user->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                     @endif
+                    @if (auth()->user()->id !== $user->id && !$user->isAdmin())
+                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm("' . trans('label.confirm_delete') . '")']) !!}
+                    @endif
                 </div>
+                {!! Form::close() !!}
             </td>
         </tr>
     @endforeach

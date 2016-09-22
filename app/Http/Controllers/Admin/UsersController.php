@@ -59,7 +59,13 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = $this->userRepository->find($id);
+
+        if (!$user) {
+            return redirect()->route('user.index')->with('errors', trans('user.user_not_found'));
+        }
+
+        return view('admin.user.show', compact('user'));
     }
 
     /**
@@ -105,6 +111,16 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->userRepository->find($id);
+
+        if (!$user) {
+            return redirect()->route('user.index')->with('errors', trans('user.user_not_found'));
+        }
+
+        if ($user->delete()) {
+            return redirect()->route('user.index')->with('success', trans('user.delete_user_successfully'));
+        }
+
+        return redirect()->route('user.index')->with('errors', trans('user.delete_user_fail'));
     }
 }
