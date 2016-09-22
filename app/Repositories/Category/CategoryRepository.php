@@ -14,4 +14,9 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         $this->model = $category;
     }
+
+    public function getListCategory()
+    {
+        return $this->model->pluck('name', 'id');
+    }
 }

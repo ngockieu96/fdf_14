@@ -10,4 +10,10 @@ return [
     'default_rate_count' => '0',
     'default_view_count' => '0',
     'image_path' => 'uploads/products',
+    'step_of_price' => '0.01',
+    'min_price_product' => '0',
+    'min_quantity_product' => '1',
+    'product' => [
+        'status' => ['Disable', 'Active'],
+    ],
 ];
