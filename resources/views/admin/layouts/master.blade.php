@@ -43,6 +43,9 @@
                     <li>
                         <a href="{{ url('/admin/product') }}">{{ trans('label.product') }}</a>
                     </li>
+                    <li>
+                        <a href="{{ url('/admin/order') }}">{{ trans('label.order') }}</a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -11,6 +11,10 @@ class Order extends Model
 {
     use SoftDeletes;
 
+    const UNPAID = 0;
+    const PAID = 1;
+    const CANCEL = 2;
+
     protected $fillable = [
         'user_id',
         'price',
@@ -29,5 +33,20 @@ class Order extends Model
     public function items()
     {
         return $this->hasMany(Item::class);
+    }
+
+    public function isUnpaid()
+    {
+        return $this->status == Order::UNPAID;
+    }
+
+    public function isPaid()
+    {
+        return $this->status == Order::PAID;
+    }
+
+    public function isCancel()
+    {
+        return $this->status == Order::CANCEL;
     }
 }

@@ -6,6 +6,7 @@ return [
     'category_per_page' => '3',
     'user_per_page' => '4',
     'product_per_page' => '2',
+    'order_per_page' => '3',
     'default_rate_average' => '0',
     'default_rate_count' => '0',
     'default_view_count' => '0',
