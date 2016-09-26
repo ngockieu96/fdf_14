@@ -26,6 +26,23 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return $data;
     }
 
+    public function update($inputs, $id)
+    {
+        if (empty($inputs['image'])) {
+            unset($inputs['image']);
+        } else {
+            $inputs['image'] = $this->uploadProductImage($inputs['image']);
+        }
+
+        $data = $this->model->where('id', $id)->update($inputs);
+
+        if (!$data) {
+            throw new Exception(trans('message.update_error'));
+        }
+
+        return $data;
+    }
+
     public function uploadProductImage($oldImage = null)
     {
         $file = Input::file('image');

@@ -11,6 +11,7 @@
         <th>{{ trans('product.rate_average') }}</th>
         <th>{{ trans('product.rate_count') }}</th>
         <th>{{ trans('product.view_count') }}</th>
+        <th>{{ trans('category.action') }}</th>
     </thead>
     <tbody>
     @foreach ($products as $product)
@@ -26,6 +27,9 @@
             <td>{{ empty($product->rate_average) ? config('settings.default_rate_average') : $product->rate_average }}</td>
             <td>{{ empty($product->rate_count) ? config('settings.default_rate_count') : $product->rate_count }}</td>
             <td>{{ empty($product->view_count) ? config('settings.default_view_count') : $product->view_count }}</td>
+            <td>
+                <a href="{!! route('product.edit', [$product->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+            </td>
         </tr>
     @endforeach
     </tbody>

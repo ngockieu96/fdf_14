@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepositoryInterface;
@@ -77,7 +78,14 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->productRepository->find($id);
+        $categories = $this->categoryRepository->getListCategory();
+
+        if (!$product) {
+            return redirect()->route('product.index')->with('errors', trans('product.product_not_found'));
+        }
+
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     /**
@@ -86,9 +94,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateProductRequest $request)
     {
-        //
+        $input = $request->only('name', 'description', 'image', 'price', 'category_id', 'quantity', 'status');
+
+        if ($this->productRepository->update($input, $id)) {
+            return redirect()->route('product.index')->with('success', trans('product.update_product_successfully'));
+        }
+
+        return redirect()->route('product.index')->with('errors', trans('product.update_product_fail'));
     }
 
     /**
