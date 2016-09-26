@@ -67,7 +67,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = $this->productRepository->find($id);
+
+        if (!$product) {
+            return redirect()->route('product.index')->with('errors', trans('product.product_not_found'));
+        }
+
+        return view('admin.product.show', compact('product'));
     }
 
     /**
@@ -113,6 +119,16 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->productRepository->find($id);
+
+        if (!$product) {
+            return redirect()->route('product.index')->with('errors', trans('product.product_not_found'));
+        }
+
+        if ($product->delete()) {
+            return redirect()->route('product.index')->with('success', trans('product.delete_product_successfully'));
+        }
+
+        return redirect()->route('product.index')->with('errors', trans('product.delete_product_fail'));
     }
 }

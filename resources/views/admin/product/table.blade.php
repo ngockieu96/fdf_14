@@ -28,7 +28,13 @@
             <td>{{ empty($product->rate_count) ? config('settings.default_rate_count') : $product->rate_count }}</td>
             <td>{{ empty($product->view_count) ? config('settings.default_view_count') : $product->view_count }}</td>
             <td>
-                <a href="{!! route('product.edit', [$product->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                {!! Form::open(['route' => ['product.destroy', $product->id], 'method' => 'delete']) !!}
+                <div class='btn-group'>
+                    <a href="{!! route('product.show', [$product->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('product.edit', [$product->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm("' . trans('label.confirm_delete') . '")']) !!}
+                </div>
+                {!! Form::close() !!}
             </td>
         </tr>
     @endforeach
