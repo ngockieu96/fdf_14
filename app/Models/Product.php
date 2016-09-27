@@ -44,4 +44,24 @@ class Product extends Model
     {
         return asset('/' . config('settings.image_path') . '/' . $this->image);
     }
+
+    public function showStatus()
+    {
+        return $this->status ? trans('product.active') : trans('product.disable');
+    }
+
+    public function getRateAverageAttribute($value)
+    {
+        return empty($value) ? config('settings.default_value') : $value;
+    }
+
+    public function getRateCountAttribute($value)
+    {
+        return empty($value) ? config('settings.default_value') : $value;
+    }
+
+    public function getViewCountAttribute($value)
+    {
+        return empty($value) ? config('settings.default_value') : $value;
+    }
 }

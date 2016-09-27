@@ -19,6 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::group(['prefix' => 'user'], function()
+{
+    Route::resource('product_detail', 'User\ProductController', [
+    'only' => ['show']
+    ]);
+});
+
 Route::get('/redirect/{provider}', 'SocialAuthController@redirectToProvider');
 Route::get('/callback/{provider}', 'SocialAuthController@handleProviderCallback');
 

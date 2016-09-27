@@ -1,5 +1,30 @@
 .edit-profile {
-  width:100px;
-  height:100px;
-  margin: 0 0 10px 315px;
+    width: 100px;
+    height: 100px;
+    margin: 0 0 10px 315px;
+}
+
+.img-product {
+    width: 400px;
+    height: 200px;
+}
+
+.list-product {
+    margin-left: 0px;
+    padding: 5px;
+}
+
+.statistic {
+    margin-right: 20px;
+    color: green;
+}
+
+.img-product-detail {
+    width: 400px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+.product-detail {
+    margin-top: 10px;
 }

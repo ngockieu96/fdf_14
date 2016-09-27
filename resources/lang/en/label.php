@@ -22,5 +22,8 @@ return [
     'remember' => 'Remember me',
     'register' => 'Register',
     'confirm_delete' => 'Are you sure?',
+    'view_details' => 'View Details',
+    'list_product' => 'List Product',
+    'product_not_found' => 'Product not found',
 
 ];

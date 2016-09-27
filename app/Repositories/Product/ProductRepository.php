@@ -55,4 +55,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
         return $fileName;
     }
+
+    public function findProductById($id)
+    {
+        return $this->model->with('category', 'comments.user')->find($id);
+    }
 }
