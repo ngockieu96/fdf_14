@@ -9,6 +9,7 @@
         <th>{{ trans('order.phone') }}</th>
         <th>{{ trans('order.address') }}</th>
         <th>{{ trans('order.date') }}</th>
+        <th>{{ trans('order.action') }}</th>
     </thead>
     <tbody>
     @foreach ($orders as $order)
@@ -22,6 +23,9 @@
             <td>{{ $order->phone }}</td>
             <td>{{ $order->address }}</td>
             <td>{{ $order->created_at }}</td>
+            <td>
+                <a href="{!! route('order.edit', [$order->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+            </td>
         </tr>
     @endforeach
     </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Order\OrderRepositoryInterface;
@@ -77,7 +78,14 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = $this->orderRepository->find($id);
+        $users = $this->userRepository->getListUser();
+
+        if (!$order) {
+            return redirect()->route('order.index')->with('errors', trans('order.order_not_found'));
+        }
+
+        return view('admin.order.edit', compact('order', 'users'));
     }
 
     /**
@@ -86,9 +94,15 @@ class OrderController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id, Request $request)
+    public function update($id, UpdateOrderRequest $request)
     {
-        //
+         $input = $request->only('user_id', 'price', 'status', 'name', 'phone', 'address', 'email');
+
+        if ($this->orderRepository->update($input, $id)) {
+            return redirect()->route('order.index')->with('success', trans('order.update_order_successfully'));
+        }
+
+        return redirect()->route('order.index')->with('errors', trans('order.update_order_fail'));
     }
 
     /**
