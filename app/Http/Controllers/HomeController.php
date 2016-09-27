@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Category\CategoryRepositoryInterface;
 
 class HomeController extends Controller
 {
@@ -11,9 +13,16 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
+
+    protected $productRepository;
+    protected $categoryRepository;
+
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        CategoryRepositoryInterface $categoryRepository
+    ) {
+        $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -23,6 +32,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = $this->productRepository->paginate(config('settings.product_per_page'));
+        $categories = $this->categoryRepository->getListCategory();
+
+        return view('home', compact('products', 'categories'));
     }
 }

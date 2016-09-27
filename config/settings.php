@@ -14,6 +14,7 @@ return [
     'step_of_price' => '0.01',
     'min_price_product' => '0',
     'min_quantity_product' => '1',
+    'default_value' => '0',
     'product' => [
         'status' => ['Disable', 'Active'],
     ],

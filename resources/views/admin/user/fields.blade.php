@@ -1,10 +1,4 @@
-@if ($errors->any())
-    <ul class="alert alert-danger">
-        @foreach ($errors->all() as $message)
-            <li>{{ $message }}</li>
-        @endforeach
-    </ul>
-@endif
+@include('errors.errors')
 
 <div class="form-group col-sm-6">
     {!! Form::label('name', trans('user.name')) !!}
