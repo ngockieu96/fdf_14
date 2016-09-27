@@ -86,4 +86,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         return $fileName;
     }
+
+    public function getListUser()
+    {
+        return $this->model->pluck('name', 'id');
+    }
 }

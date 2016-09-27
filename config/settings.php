@@ -17,4 +17,7 @@ return [
     'product' => [
         'status' => ['Disable', 'Active'],
     ],
+    'order' => [
+        'status' => ['unpaid', 'paid', 'cancel'],
+    ],
 ];

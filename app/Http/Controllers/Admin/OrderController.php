@@ -3,17 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Order\OrderRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 
 class OrderController extends Controller
 {
     protected $orderRepository;
+    protected $userRepository;
 
-    public function __construct(OrderRepositoryInterface $orderRepository)
-    {
+    public function __construct(
+        OrderRepositoryInterface $orderRepository,
+        UserRepositoryInterface $userRepository
+    ) {
         $this->orderRepository = $orderRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function index()
@@ -30,7 +36,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $users = $this->userRepository->getListUser();
+
+        return view('admin.order.create', compact('users'));
     }
 
 
@@ -39,9 +47,15 @@ class OrderController extends Controller
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateOrderRequest $request)
     {
-        //
+        $input = $request->only('user_id', 'price', 'status', 'name', 'phone', 'address', 'email');
+
+        if ($this->orderRepository->create($input)) {
+            return redirect()->route('order.index')->with('success', trans('order.create_order_successfully'));
+        }
+
+        return redirect()->route('order.index')->with('errors', trans('order.create_order_fail'));
     }
 
     /**
