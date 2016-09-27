@@ -67,7 +67,13 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = $this->orderRepository->find($id);
+
+        if (!$order) {
+            return redirect()->route('order.index')->with('errors', trans('order.order_not_found'));
+        }
+
+        return view('admin.order.show', compact('order'));
     }
 
     /**
@@ -113,6 +119,16 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $order = $this->orderRepository->find($id);
+
+        if (!$order) {
+            return redirect()->route('order.index')->with('errors', trans('order.order_not_found'));
+        }
+
+        if ($order->delete()) {
+            return redirect()->route('order.index')->with('success', trans('order.delete_order_successfully'));
+        }
+
+        return redirect()->route('order.index')->with('errors', trans('order.delete_order_fail'));
     }
 }

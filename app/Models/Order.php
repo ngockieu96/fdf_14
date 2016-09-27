@@ -49,4 +49,9 @@ class Order extends Model
     {
         return $this->status == Order::CANCEL;
     }
+
+    public function showStatus()
+    {
+        return $this->isPaid() ? trans('order.paid') : ($this->isUnpaid() ? trans('order.unpaid') : trans('order.cancel'));
+    }
 }
