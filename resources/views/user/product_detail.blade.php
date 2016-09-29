@@ -26,8 +26,19 @@
                         <label> {{ trans('product.price') }}: </label>
                         <i>{{ $product->price }}</i>
                         <br>
-                        <label> {{ trans('product.quantity') }}:</label>
-                        <i>{{ $product->quantity }}</i>
+                        {!! Form::open(['route' => 'item.store']) !!}
+                        <div class="form-group col-sm-4">
+                            {!! Form::number('quantity', config('settings.default_quantity'), ['min' => config('settings.min_quantity_product'), 'class' => 'form-control']) !!}
+                        </div>
+                        <div class="form-group col-sm-4">
+                            {!! Form::hidden('product_id', $product->id) !!}
+                                @if ($isOrdered)
+                                    {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart', 'disabled' => 'disabled']) !!}
+                                @else
+                                    {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart']) !!}
+                                @endif
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                 </div>
             </div>

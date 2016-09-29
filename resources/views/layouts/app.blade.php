@@ -45,7 +45,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ trans('label.app_name') }}
                 </a>
             </div>
@@ -53,7 +53,14 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    &nbsp;
+                    <li>
+                        <a href="{{ URL::action('User\CartController@index') }}">
+                            <button class="btn btn-danger btn-lg">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span id="items">{{ Session::has('listItem') ? count(Session::get('listItem')) : config('settings.default_cart') }}</span>
+                            </button>
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -24,6 +24,12 @@ Route::group(['prefix' => 'user'], function()
     Route::resource('product_detail', 'User\ProductController', [
     'only' => ['show']
     ]);
+    Route::resource('item', 'User\ItemController', [
+        'only' => ['index', 'store']
+    ]);
+    Route::resource('cart', 'User\CartController', [
+        'only' => ['index']
+    ]);
 });
 
 Route::get('/redirect/{provider}', 'SocialAuthController@redirectToProvider');

@@ -21,7 +21,20 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = $this->productRepository->findProductById($id);
+        $product->view_count += config('settings.increate_view');
+        $product->save();
+        $isOrdered = false;
 
-        return view('user.product_detail', compact('product'));
+        if (Session::has('listItem')) {
+            $listItem = Session::get('listItem');
+            foreach ($listItem as $item) {
+                if ($item['product_id'] == $id) {
+                    $isOrdered = true;
+                    break;
+                }
+            }
+        }
+
+        return view('user.product_detail', compact('product', 'isOrdered'));
     }
 }

@@ -25,5 +25,6 @@ return [
     'view_details' => 'View Details',
     'list_product' => 'List Product',
     'product_not_found' => 'Product not found',
+    'add_to_cart' => 'Add to Cart',
 
 ];
