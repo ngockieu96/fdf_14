@@ -47,4 +47,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()
     Route::resource('profile', 'User\UsersController', [
          'only' => ['index', 'update']
      ]);
+    Route::resource('orders', 'User\OrderController', [
+        'only' => ['create', 'store']
+    ]);
 });

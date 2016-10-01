@@ -27,6 +27,13 @@
                                     <td>{{ $listQuantity[$product->id] * $product->price }}</td>
                                 </tr>
                             @endforeach
+                                <tr>
+                                    <td>
+                                        <a href="{!! URL::action('User\OrderController@create') !!}" class='btn btn-success'>
+                                            <span class='glyphicon glyphicon-shopping-cart'></span>{{ trans('cart.checkout') }}
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     @else

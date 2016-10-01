@@ -19,6 +19,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return $this->model->whereIn('id', $listIds)->get();
     }
 
+    public function getListPriceOfProducts()
+    {
+        return $this->model->pluck('price', 'id');
+    }
+
     public function create($inputs)
     {
         $inputs['image'] = $this->uploadProductImage($inputs['image']);

@@ -17,6 +17,7 @@ return [
     'default_value' => '0',
     'default_quantity' => '1',
     'default_cart' => '0',
+    'default_status' => '0',
     'default_count_item' => '1',
     'product' => [
         'status' => ['Disable', 'Active'],
