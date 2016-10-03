@@ -48,6 +48,6 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()
          'only' => ['index', 'update']
      ]);
     Route::resource('orders', 'User\OrderController', [
-        'only' => ['create', 'store']
+        'only' => ['index', 'create', 'show', 'store']
     ]);
 });

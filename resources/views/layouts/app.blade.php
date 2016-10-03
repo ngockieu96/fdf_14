@@ -61,6 +61,11 @@
                             </button>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ URL::action('User\OrderController@index') }}">
+                            {{ trans('label.order_history') }}
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -12,4 +12,16 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
     {
         $this->model = $order;
     }
+
+    public function getOrderHistory()
+    {
+        $currentId = auth()->user()->id;
+
+        return $this->model->where('user_id', $currentId)->orderBy('created_at', 'DESC')->paginate(config('settings.order_per_page'));
+    }
+
+    public function findOrderById($id)
+    {
+        return $this->model->with('items.product')->find($id);
+    }
 }

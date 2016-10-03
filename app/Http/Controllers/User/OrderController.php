@@ -28,6 +28,13 @@ class OrderController extends Controller
         $this->itemRepository = $itemRepository;
     }
 
+    public function index()
+    {
+        $orders = $this->orderRepository->getOrderHistory();
+
+        return view('user.orders', compact('orders'));
+    }
+
     public function create()
     {
         if (Session::has('listItem')) {
@@ -48,6 +55,13 @@ class OrderController extends Controller
 
             return view('user.checkout', compact('orderedProduct', 'listQuantity', 'totalMoney', 'currentUser', 'totalQuantity', 'listSubTotal'));
         }
+    }
+
+    public function show($id)
+    {
+        $order = $this->orderRepository->findOrderById($id);
+
+        return view('user.order_details', compact('order'));
     }
 
     public function store(Request $request)

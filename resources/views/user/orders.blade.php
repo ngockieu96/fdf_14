@@ -1,0 +1,44 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ trans('order.history_orders') }}</div>
+                <div class="panel-body">
+                    @if ($orders->count())
+                        <table class="table table-responsive" id="users-table">
+                            <thead>
+                                <th>{{ trans('order.id') }}</th>
+                                <th>{{ trans('order.transaction_date') }}</th>
+                                <th>{{ trans('order.total') }}</th>
+                                <th>{{ trans('order.status') }}</th>
+                                <th>{{ trans('order.action') }}</th>
+                            </thead>
+                            <tbody>
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td>{{ $order->id }}</td>
+                                    <td>{{ $order->created_at }}</td>
+                                    <td>{{ $order->price }}</td>
+                                    <td>{{ $order->showStatus() }}</td>
+                                    <td>
+                                        <a href="{{ route('orders.show', [$order->id]) }}" class='btn btn-info'>
+                                            <span class='glyphicon glyphicon-list-alt'></span>{{ trans('order.view_details') }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!! $orders->render() !!}
+                    @else
+                        {{ trans('order.order_not_found') }}
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
