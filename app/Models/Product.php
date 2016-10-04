@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
 use App\Models\Item;
 use App\Models\Category;
+use App\QueryFilter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -63,5 +64,10 @@ class Product extends Model
     public function getViewCountAttribute($value)
     {
         return empty($value) ? config('settings.default_value') : $value;
+    }
+
+    public function scopeFilter($query, QueryFilter $filters)
+    {
+        return $filters->apply($query);
     }
 }

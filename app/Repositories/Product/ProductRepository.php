@@ -70,4 +70,9 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
         return $this->model->with('category', 'comments.user')->find($id);
     }
+
+    public function filter($filters)
+    {
+        return $this->model->filter($filters)->paginate(config('settings.product_per_page'));
+    }
 }

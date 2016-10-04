@@ -27,5 +27,6 @@ return [
     'product_not_found' => 'Product not found',
     'add_to_cart' => 'Add to Cart',
     'order_history' => 'Order History',
+    'filter' => 'Filter',
 
 ];

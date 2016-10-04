@@ -25,4 +25,26 @@ return [
     'order' => [
         'status' => ['unpaid', 'paid', 'cancel'],
     ],
+    'low_min' => '0',
+    'low_max' => '10',
+    'medium_max' => '20',
+    'default_category_id' => '0',
+    'default_rating' => 'desc',
+    'default_price' => 'low',
+    'low' => 'low',
+    'medium' => 'medium',
+    'high' => 'high',
+    'all' => 'All',
+    'filter' => [
+        'price' => [
+            'all' => 'All',
+            'low' => '0 - 10 USD',
+            'medium' => '10 - 20 USD',
+            'high' => '> 20 USD',
+        ],
+        'orderby' => [
+            'desc' => 'Highest first',
+            'asc' => 'Lowest first',
+        ],
+    ],
 ];

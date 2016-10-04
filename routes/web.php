@@ -30,6 +30,12 @@ Route::group(['prefix' => 'user'], function()
     Route::resource('cart', 'User\CartController', [
         'only' => ['index']
     ]);
+    Route::get('filter-product', [
+        'as' => 'filter-product', 'uses' => 'User\FilterController@filter'
+    ]);
+    Route::post('filter-product', [
+        'as' => 'filter-product', 'uses' => 'User\FilterController@filter'
+    ]);
 });
 
 Route::get('/redirect/{provider}', 'SocialAuthController@redirectToProvider');
