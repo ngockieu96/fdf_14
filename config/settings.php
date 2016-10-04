@@ -48,4 +48,15 @@ return [
         ],
     ],
     'min_quantity_order' => '1',
+    'increate_rate' => '1',
+    'round_rate_average' => '1',
+    'content_rows' => '4',
+    'increate_view' => '1',
+    'rate' => [
+        'so_bad' => '1',
+        'bad' => '2',
+        'normal' => '3',
+        'good' => '4',
+        'excellent' => '5',
+    ],
 ];

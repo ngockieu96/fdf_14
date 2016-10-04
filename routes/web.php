@@ -56,4 +56,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()
     Route::resource('orders', 'User\OrderController', [
         'only' => ['index', 'create', 'show', 'store']
     ]);
+    Route::resource('comment', 'User\CommentController', [
+         'only' => ['store']
+    ]);
 });

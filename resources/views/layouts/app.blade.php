@@ -112,6 +112,8 @@
 
     {!! Html::script('js/cart.js') !!}
 
+    {!! Html::script('js/comment.js') !!}
+
     <!-- Bootstrap Core JavaScript -->
     {!! Html::script('/bower/bootstrap/dist/js/bootstrap.min.js') !!}
 

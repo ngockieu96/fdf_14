@@ -7,20 +7,26 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Comment\CommentRepositoryInterface;
 
 class ProductController extends Controller
 {
 
     protected $productRepository;
+    protected $commentRepository;
 
-    public function __construct(ProductRepositoryInterface $productRepository)
-    {
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        CommentRepositoryInterface $commentRepository
+    ) {
         $this->productRepository = $productRepository;
+        $this->commentRepository = $commentRepository;
     }
 
     public function show($id)
     {
         $product = $this->productRepository->findProductById($id);
+        $isRatedProduct = $this->commentRepository->isRatedProduct($id);
         $product->view_count += config('settings.increate_view');
         $product->save();
         $isOrdered = false;
@@ -35,6 +41,6 @@ class ProductController extends Controller
             }
         }
 
-        return view('user.product_detail', compact('product', 'isOrdered'));
+        return view('user.product_detail', compact('product', 'isOrdered', 'isRatedProduct'));
     }
 }

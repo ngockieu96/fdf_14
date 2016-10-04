@@ -28,5 +28,15 @@ return [
     'add_to_cart' => 'Add to Cart',
     'order_history' => 'Order History',
     'filter' => 'Filter',
+    'comment' => 'Comment',
+    'comment_placeholder' => 'Enter comment...',
+    'comment_fail' => 'Comment Fail,Please try again',
+    'rate' => [
+        'excellent' => 'Excellent',
+        'good' => 'Good',
+        'normal' => 'Normal',
+        'bad' => 'Bad',
+        'so_bad' => 'So Bad',
+    ],
 
 ];

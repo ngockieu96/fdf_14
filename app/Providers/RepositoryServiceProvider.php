@@ -13,6 +13,8 @@ use App\Repositories\Order\OrderRepository;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Item\ItemRepository;
 use App\Repositories\Item\ItemRepositoryInterface;
+use App\Repositories\Comment\CommentRepository;
+use App\Repositories\Comment\CommentRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -37,5 +39,6 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind(ProductRepositoryInterface::class, ProductRepository::class);
         App::bind(OrderRepositoryInterface::class, OrderRepository::class);
         App::bind(ItemRepositoryInterface::class, ItemRepository::class);
+        App::bind(CommentRepositoryInterface::class, CommentRepository::class);
     }
 }
