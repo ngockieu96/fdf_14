@@ -28,7 +28,7 @@ Route::group(['prefix' => 'user'], function()
         'only' => ['index', 'store']
     ]);
     Route::resource('cart', 'User\CartController', [
-        'only' => ['index']
+        'only' => ['index', 'update', 'destroy']
     ]);
     Route::get('filter-product', [
         'as' => 'filter-product', 'uses' => 'User\FilterController@filter'

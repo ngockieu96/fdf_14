@@ -24,6 +24,21 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         return $this->model->pluck('price', 'id');
     }
 
+    public function getTotalCost($listItem)
+    {
+        foreach ($listItem as $item) {
+            $listProductId[] = $item['product_id'];
+            $listQuantity[$item['product_id']] = $item['quantity'];
+        }
+        $orderedProduct = $this->getListProductByListIds($listProductId);
+        $totalCost = 0;
+        foreach ($orderedProduct as $product) {
+            $totalCost += $product->price * $listQuantity[$product->id];
+        }
+
+        return $totalCost;
+    }
+
     public function create($inputs)
     {
         $inputs['image'] = $this->uploadProductImage($inputs['image']);

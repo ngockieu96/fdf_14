@@ -19,5 +19,6 @@ return [
     'remove_from_cart_fail' => 'Remove product from cart fail',
     'cart_empty' => 'Cart Empty,Please add more product to your Cart',
     'back_to_home' => 'Back to Home',
+    'confirm_remove_product_from_cart' => 'Do you want to remove this product from Cart?',
 
 ];

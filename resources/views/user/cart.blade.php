@@ -17,17 +17,37 @@
                                 <th>{{ trans('cart.price') }}</th>
                                 <th>{{ trans('cart.quantity') }}</th>
                                 <th>{{ trans('cart.sub_total') }}</th>
+                                <th>{{ trans('cart.action') }}</th>
                             </thead>
                             <tbody>
                             @foreach ($orderedProduct as $product)
-                                <tr>
+                                <div class="hide" data-route-result = "cart"
+                                    data-confirm-remove = "{{ trans('cart.confirm_remove_product_from_cart') }}">
+                                </div>
+                                <tr id={{ 'row' . $product->id }}>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->price }}</td>
-                                    <td>{{ $listQuantity[$product->id] }}</td>
-                                    <td>{{ $listQuantity[$product->id] * $product->price }}</td>
+                                    <td>
+                                        <div class="col-md-6">
+                                            {!! Form::number('quantity', $listQuantity[$product->id], ['min' => config('settings.min_quantity_order'), 'class' => 'form-control', 'id' => 'quantity' . $product->id]) !!}
+                                        </div>
+                                        <div class="col-md-6" data-product-id="{{ $product->id }}" data-price="{{ $product->price }}">
+                                            {!! Form::button(trans('cart.update'), ['class' => 'form-control updateCart']) !!}
+                                        </div>
+                                    </td>
+                                    <td id="sub-total{{ $product->id }}">{{ $listQuantity[$product->id] * $product->price }}</td>
+                                    <td>
+                                        <div data-product-id="{{ $product->id }}">
+                                            {!! Form::button('<span class="glyphicon glyphicon-remove"></span> ' . trans('cart.remove_from_cart'), ['class' => 'btn btn-danger removeCart'])!!}
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                                 <tr>
+                                    <td><strong>{{ trans('cart.total_cost') }}</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td id="total-cost">{{ $totalCost }}</td>
                                     <td>
                                         <a href="{!! URL::action('User\OrderController@create') !!}" class='btn btn-success'>
                                             <span class='glyphicon glyphicon-shopping-cart'></span>{{ trans('cart.checkout') }}

@@ -47,4 +47,5 @@ return [
             'asc' => 'Lowest first',
         ],
     ],
+    'min_quantity_order' => '1',
 ];

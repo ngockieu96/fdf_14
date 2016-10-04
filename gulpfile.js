@@ -16,4 +16,5 @@ require('laravel-elixir-vue');
 elixir(function (mix) {
     mix.copy('resources/assets/sass/admin.scss', 'public/css/admin.css');
     mix.copy('resources/assets/sass/user.scss', 'public/css/user.css');
+    mix.copy('resources/assets/js/cart.js', 'public/js/cart.js');
 })
