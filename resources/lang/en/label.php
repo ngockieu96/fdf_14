@@ -38,5 +38,6 @@ return [
         'bad' => 'Bad',
         'so_bad' => 'So Bad',
     ],
+    'suggestion' => 'Suggestion',
 
 ];

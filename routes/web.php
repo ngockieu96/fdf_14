@@ -59,4 +59,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()
     Route::resource('comment', 'User\CommentController', [
          'only' => ['store']
     ]);
+    Route::resource('suggestion', 'User\SuggestionController', [
+        'only' => ['index', 'store']
+    ]);
 });

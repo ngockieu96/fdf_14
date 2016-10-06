@@ -7,6 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('label.list_product') }}</div>
                 <div class="panel-body">
+                    @include('admin.layouts.partials.success')
+                    @include('admin.layouts.partials.errors')
                     {!! Form::open(['route' => 'filter-product']) !!}
                         <div class="form-group col-sm-3">
                             {!! Form::label('category', trans('product.category')) !!}

@@ -66,6 +66,11 @@
                             {{ trans('label.order_history') }}
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ URL::action('User\SuggestionController@index') }}">
+                            {{ trans('label.suggestion') }}
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -59,4 +59,5 @@ return [
         'good' => '4',
         'excellent' => '5',
     ],
+    'suggestion_image_path' => 'uploads/suggestion',
 ];
