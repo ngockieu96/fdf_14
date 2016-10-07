@@ -39,28 +39,28 @@
                     <a class="navbar-brand" href="{{ url('/home') }}">{{ trans('label.app_name') }}</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li class="{{ Request::is('admin/category') ? 'active' : '' }}">
                         <a href="{{ url('/admin/category') }}">
                             <span class="glyphicon glyphicon-th-list">
                                 {{ trans('label.category') }}
                             </span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('admin/user') ? 'active' : '' }}">
                         <a href="{{ url('/admin/user') }}">
                             <span class="glyphicon glyphicon-user">
                                 {{ trans('label.user') }}
                             </span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('admin/product') ? 'active' : '' }}">
                         <a href="{{ url('/admin/product') }}">
                             <span class="glyphicon glyphicon-book">
                                 {{ trans('label.product') }}
                             </span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::is('admin/order') ? 'active' : '' }}">
                         <a href="{{ url('/admin/order') }}">
                             <span class="glyphicon glyphicon-credit-card">
                                 {{ trans('label.order') }}

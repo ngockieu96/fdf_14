@@ -39,5 +39,6 @@ return [
         'so_bad' => 'So Bad',
     ],
     'suggestion' => 'Suggestion',
+    'share' => 'Share',
 
 ];

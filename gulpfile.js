@@ -18,4 +18,5 @@ elixir(function (mix) {
     mix.copy('resources/assets/sass/user.scss', 'public/css/user.css');
     mix.copy('resources/assets/js/cart.js', 'public/js/cart.js');
     mix.copy('resources/assets/js/comment.js', 'public/js/comment.js');
+    mix.copy('resources/assets/js/shareSocial.js', 'public/js/shareSocial.js');
 })

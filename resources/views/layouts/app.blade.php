@@ -8,6 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @yield('meta')
+
     <title>{{ trans('label.app_name') }}</title>
 
     <!-- Styles -->
@@ -118,6 +120,8 @@
     {!! Html::script('js/cart.js') !!}
 
     {!! Html::script('js/comment.js') !!}
+
+    {!! Html::script('js/shareSocial.js') !!}
 
     <!-- Bootstrap Core JavaScript -->
     {!! Html::script('/bower/bootstrap/dist/js/bootstrap.min.js') !!}

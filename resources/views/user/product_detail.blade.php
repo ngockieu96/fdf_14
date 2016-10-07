@@ -1,4 +1,12 @@
 @extends('layouts.app')
+@section('meta')
+    <meta property="og:url" content="{{ action('User\ProductController@show',
+    ['id' => $product->id]) }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" ontent="{{ $product->name }}" />
+    <meta property="og:description" content="{{ $product->description }}?" />
+    <meta property="og:image" content="{{ $product->image }}" />
+@endsection
 
 @section('content')
 <div class="container">
@@ -56,9 +64,22 @@
                                 @endif
                             {!! Form::close() !!}
                         </div>
+                        <div class="form-group col-sm-12">
+                            <div class="fb-like"
+                                data-href="{{ action('User\ProductController@show',
+                                    ['id' => $product->id]) }}"
+                                data-layout="standard" data-action="like"
+                                data-size="small" data-show-faces="true"
+                                data-share="true">
+                            </div>
+                    </div>
                     </div>
                     <div class="form-group col-sm-12">
                         <div class="list-comment">
+                            <div class="fb-comments"
+                                data-href="{{ action('User\ProductController@show', ['id' => $product->id]) }}" data-width="100%">
+                            </div>
+                            <br><br>
                             <div id="comments">
                                 @if ($product->comments->count())
                                     @foreach ($product->comments as $comment)
