@@ -88,6 +88,6 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function filter($filters)
     {
-        return $this->model->filter($filters)->paginate(config('settings.product_per_page'));
+        return $this->model->filter($filters)->paginate(config('settings.product_limit'));
     }
 }

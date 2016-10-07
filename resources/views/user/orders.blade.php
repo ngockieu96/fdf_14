@@ -22,10 +22,16 @@
                                     <td>{{ $order->id }}</td>
                                     <td>{{ $order->created_at }}</td>
                                     <td>{{ $order->price }}</td>
-                                    <td>{{ $order->showStatus() }}</td>
+                                    <td>
+                                        <span class="label label-primary">
+                                            {{ $order->showStatus() }}
+                                        </span>
+                                    </td>
                                     <td>
                                         <a href="{{ route('orders.show', [$order->id]) }}" class='btn btn-info'>
-                                            <span class='glyphicon glyphicon-list-alt'></span>{{ trans('order.view_details') }}
+                                            <span class='glyphicon glyphicon-list-alt'>
+                                                {{ trans('order.view_details') }}
+                                            </span>
                                         </a>
                                     </td>
                                 </tr>

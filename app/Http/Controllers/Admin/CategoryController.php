@@ -117,7 +117,7 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with('errors', trans('category.category_not_found'));
         }
 
-        if ($category->delete()) {
+        if ($this->categoryRepository->deleteCategoryWithProduct($category)) {
             return redirect()->route('category.index')->with('success', trans('category.delete_category_successfully'));
         }
 

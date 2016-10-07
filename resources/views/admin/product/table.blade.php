@@ -23,7 +23,11 @@
             <td><img src="{{  $product->getImagePath() }}" class="img-product"></span></td>
             <td>{{ $product->price }}</td>
             <td>{{ $product->quantity }}</td>
-            <td>{{ $product->status ? trans('product.active') : trans('product.disable') }}</td>
+            <td>
+                <span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">
+                    {{ $product->showStatus() }}
+                </span>
+            </td>
             <td>{{ empty($product->rate_average) ? config('settings.default_rate_average') : $product->rate_average }}</td>
             <td>{{ empty($product->rate_count) ? config('settings.default_rate_count') : $product->rate_count }}</td>
             <td>{{ empty($product->view_count) ? config('settings.default_view_count') : $product->view_count }}</td>

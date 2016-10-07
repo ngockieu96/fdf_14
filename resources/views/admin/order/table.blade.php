@@ -17,7 +17,11 @@
             <td>{{ $order->id }}</td>
             <td>{{ $order->user->name }}</td>
             <td>{{ $order->price }}</td>
-            <td>{{ $order->isPaid() ? trans('order.paid') : ($order->isUnpaid() ? trans('order.unpaid') : trans('order.cancel')) }}</td>
+            <td>
+                <span class="label label-primary">
+                    {{ $order->showStatus() }}
+                </span>
+            </td>
             <td>{{ $order->name }}</td>
             <td>{{ $order->email }}</td>
             <td>{{ $order->phone }}</td>

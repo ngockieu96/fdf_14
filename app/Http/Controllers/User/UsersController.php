@@ -41,6 +41,6 @@ class UsersController extends Controller
             return view('home')->withError(trans('message.update_error'));
         }
 
-        return view('home');
+        return redirect()->action('HomeController@index');
     }
 }

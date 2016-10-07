@@ -32,7 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = $this->productRepository->paginate(config('settings.product_per_page'));
+        $products = $this->productRepository->paginate(config('settings.product_limit'));
         $categories = $this->categoryRepository->getListCategory();
 
         return view('home', compact('products', 'categories'));

@@ -60,4 +60,5 @@ return [
         'excellent' => '5',
     ],
     'suggestion_image_path' => 'uploads/suggestion',
+    'product_limit' => '4',
 ];

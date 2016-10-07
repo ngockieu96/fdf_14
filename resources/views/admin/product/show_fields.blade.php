@@ -30,7 +30,9 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('status', trans('product.status')) !!}
-    <p> {!! $product->status ? trans('product.active') : trans('product.disable') !!} </p>
+        <span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">
+            {{ $product->showStatus() }}
+        </span>
 </div>
 
 <div class="form-group col-sm-6">

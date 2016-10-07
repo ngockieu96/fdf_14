@@ -30,12 +30,27 @@
                         @if ($products->count())
                             @foreach ($products as $product)
                                 <div class="form-group col-sm-6">
-                                    <strong> {{ $product->name }} </strong> <i> ({{ $product->showStatus() }}) </i>
+                                    <strong> {{ $product->name }} </strong>
+                                    <span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">
+                                        {{ $product->showStatus() }}
+                                    </span>
                                     <br>
-                                    <i class="statistic"> {{ trans('product.view_count') }}: {{ $product->view_count }} </i>
-                                    <i class="statistic"> {{ trans('product.rate_count') }}: {{ $product->rate_count }} </i>
-                                    <i class="statistic"> {{ trans('product.rate_average') }}: {{ $product->rate_average }} </i>
-                                    <br><br>
+                                    <label class="statistic">
+                                        <span class="label label-primary">
+                                            {{ trans('product.view_count') }} {{ $product->view_count }}
+                                        </span>
+                                    </label>
+                                    <label class="statistic">
+                                        <span class="label label-primary">
+                                            {{ trans('product.rate_count') }} {{ $product->rate_count }}
+                                        </span>
+                                    </label>
+                                    <label class="statistic">
+                                        <span class="label label-primary">
+                                            {{ trans('product.rate_average') }} {{ $product->rate_average }}
+                                        </span>
+                                    </label>
+                                    <br>
                                     <img class="img-product" src="{{ $product->getImagePath() }}">
                                     <br>
                                     <a class="btn btn-infor" href="{{ URL::action('User\ProductController@show', ['id' => $product->id]) }}">{{ trans('label.view_details') }}</a>

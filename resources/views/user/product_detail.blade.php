@@ -13,11 +13,26 @@
                         <img class="img-product-detail" src="{{ $product->getImagePath() }}">
                     </div>
                     <div class="form-group col-sm-6 product-detail">
-                        <strong> {{ $product->name }} </strong> <i> ({{ $product->showStatus() }}) </i>
+                        <strong> {{ $product->name }} </strong>
+                        <span class="label {{ $product->status ? 'label-success' : 'label-danger' }}">
+                            {{ $product->showStatus() }}
+                        </span>
                         <br>
-                        <i class="statistic"> {{ trans('product.view_count') }}: {{ $product->view_count }} </i>
-                        <i class="statistic"> {{ trans('product.rate_count') }}: <span id="rate-count">{{ $product->rate_count }}</span> </i>
-                        <i class="statistic"> {{ trans('product.rate_average') }}: <span id="rate-average">{{ $product->rate_average }}</span> </i>
+                        <label class="statistic">
+                            <span class="label label-primary">
+                                {{ trans('product.view_count') }} {{ $product->view_count }}
+                            </span>
+                        </label>
+                        <label class="statistic">
+                            <span class="label label-primary">
+                                {{ trans('product.rate_count') }} <span id="rate-count">{{ $product->rate_count }}</span>
+                            </span>
+                        </label>
+                        <label class="statistic">
+                            <span class="label label-primary">
+                                {{ trans('product.rate_average') }} <span id="rate-average">{{ $product->rate_average }}</span>
+                            </span>
+                        </label>
                         <br>
                         <label> {{ trans('product.category') }}: </label>
                         <i>{{ $product->category->name }} </i>

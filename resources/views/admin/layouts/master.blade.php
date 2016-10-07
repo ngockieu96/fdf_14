@@ -22,7 +22,12 @@
 
 <!--Header -->
 <div class="row" id="header">
-    <h1><img class="img-admin" src="{{ asset(config('settings.avatar_path') . '/' .  config('settings.avatar_default')) }}"> {{ auth()->user()->name }} </h1>
+    <h2>
+        <img class="img-admin img-circle" src="{{ asset(config('settings.avatar_path') . '/' .  config('settings.avatar_default')) }}">
+            <a href="{{ URL::action('User\UsersController@index') }}">
+                {{ auth()->user()->name }}
+            </a>
+    </h2>
 </div>
 <div class="row">
 
@@ -35,16 +40,32 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ url('/admin/category') }}">{{ trans('label.category') }}</a>
+                        <a href="{{ url('/admin/category') }}">
+                            <span class="glyphicon glyphicon-th-list">
+                                {{ trans('label.category') }}
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin/user') }}">{{ trans('label.user') }}</a>
+                        <a href="{{ url('/admin/user') }}">
+                            <span class="glyphicon glyphicon-user">
+                                {{ trans('label.user') }}
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin/product') }}">{{ trans('label.product') }}</a>
+                        <a href="{{ url('/admin/product') }}">
+                            <span class="glyphicon glyphicon-book">
+                                {{ trans('label.product') }}
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin/order') }}">{{ trans('label.order') }}</a>
+                        <a href="{{ url('/admin/order') }}">
+                            <span class="glyphicon glyphicon-credit-card">
+                                {{ trans('label.order') }}
+                            </span>
+                        </a>
                     </li>
                 </ul>
             </div>

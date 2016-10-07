@@ -35,7 +35,11 @@
                             </tr>
                             <tr>
                                 <td><strong>{{ trans('order.status') }}</strong></td>
-                                <td>{{ $order->showStatus() }}</td>
+                                <td>
+                                    <span class="label label-primary">
+                                        {{ $order->showStatus() }}
+                                    </span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

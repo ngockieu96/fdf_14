@@ -15,7 +15,9 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('status', trans('order.status')) !!}
-    <p>{!! $order->showStatus() !!}</p>
+    <span class="label label-primary">
+        {{ $order->showStatus() }}
+    </span>
 </div>
 
 <div class="form-group col-sm-6">
@@ -43,7 +45,7 @@
     <p>{!! $order->created_at !!}</p>
 </div>
 
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-12">
     {!! Form::label('updated_at', trans('order.updated_at')) !!}
     <p>{!! $order->updated_at !!}</p>
 </div>
