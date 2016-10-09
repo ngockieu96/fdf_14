@@ -33,14 +33,14 @@ class SocialAccountService
             'provider_user_id' => $providerUser->getId(),
             'provider' => $providerName,
         ]);
-        $user = $userRepository->getUserWithEmail($providerUser);
+        $user = $this->userRepository->getUserWithEmail($providerUser);
 
         if (!$user) {
             $datas = [
                 'email' => $providerUser->getEmail(),
                 'name' => $providerUser->getName(),
             ];
-            $user = $userRepository->createUserSocial($datas);
+            $user = $this->userRepository->createUserSocial($datas);
         }
 
         $account->user()->associate($user);

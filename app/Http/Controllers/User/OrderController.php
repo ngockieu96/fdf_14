@@ -6,6 +6,7 @@ use DB;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\CreateInformationShippingRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\Product\ProductRepositoryInterface;
@@ -64,7 +65,7 @@ class OrderController extends Controller
         return view('user.order_details', compact('order'));
     }
 
-    public function store(Request $request)
+    public function store(CreateInformationShippingRequest $request)
     {
         $inputs = $request->only('name', 'email', 'address', 'phone', 'totalMoney');
         $currentOrder = [

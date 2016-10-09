@@ -9,23 +9,25 @@
                 <div class="panel-body">
                     @include('admin.layouts.partials.success')
                     @include('admin.layouts.partials.errors')
-                    {!! Form::open(['route' => 'filter-product']) !!}
-                        <div class="form-group col-sm-3">
-                            {!! Form::label('category', trans('product.category')) !!}
-                            {!! Form::select('category_id', ['' => config('settings.all')] + $categories->toArray(), empty($inputs) ? null : $inputs['category_id'], ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group col-sm-3">
-                            {!! Form::label('price', trans('product.price')) !!}
-                            {!! Form::select('price', config('settings.filter.price'), empty($inputs) ? null : $inputs['price'], ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group col-sm-3">
-                            {!! Form::label('rating', trans('product.rate_average')) !!}
-                            {!! Form::select('rating', config('settings.filter.orderby'), empty($inputs) ? null : $inputs['rating'], ['class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group col-sm-12">
-                            {!! Form::button(trans('label.filter'), ['type' => 'submit', 'class' => 'btn btn-info']) !!}
-                        </div>
-                    {!! Form::close() !!}
+                    <div class="col-sm-10 col-sm-offset-1 filter">
+                        {!! Form::open(['route' => 'filter-product']) !!}
+                            <div class="form-group col-sm-4">
+                                {!! Form::label('category', trans('product.category')) !!}
+                                {!! Form::select('category_id', ['' => config('settings.all')] + $categories->toArray(), empty($inputs) ? null : $inputs['category_id'], ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-4">
+                                {!! Form::label('price', trans('product.price')) !!}
+                                {!! Form::select('price', config('settings.filter.price'), empty($inputs) ? null : $inputs['price'], ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-4">
+                                {!! Form::label('rating', trans('product.rate_average')) !!}
+                                {!! Form::select('rating', config('settings.filter.orderby'), empty($inputs) ? null : $inputs['rating'], ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-12">
+                                {!! Form::button(trans('label.filter'), ['type' => 'submit', 'class' => 'btn btn-info']) !!}
+                            </div>
+                        {!! Form::close() !!}
+                    </div>
                     <div class="list-product">
                         @if ($products->count())
                             @foreach ($products as $product)

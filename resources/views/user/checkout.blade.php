@@ -35,6 +35,7 @@
                 </div>
                 <strong>{{ trans('order.billing_information') }}</strong>
                 <br><br>
+                @include('errors.errors')
                 {!! Form::open(['route' => 'orders.store']) !!}
                     <div class="form-group col-sm-6">
                         {!! Form::label('name', trans('user.name')) !!}

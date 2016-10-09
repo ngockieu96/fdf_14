@@ -42,28 +42,33 @@
                             </span>
                         </label>
                         <br>
-                        <label> {{ trans('product.category') }}: </label>
+                        <label> {{ trans('product.category') }} </label>
                         <i>{{ $product->category->name }} </i>
                         <br>
-                        <label> {{ trans('product.description') }}: </label>
+                        <label> {{ trans('product.description') }} </label>
                         <i> {{ $product->description }} </i>
                         <br>
-                        <label> {{ trans('product.price') }}: </label>
+                        <label> {{ trans('product.price') }} </label>
                         <i>{{ $product->price }}</i>
                         <br>
-                        {!! Form::open(['route' => 'item.store']) !!}
-                        <div class="form-group col-sm-4">
-                            {!! Form::number('quantity', config('settings.default_quantity'), ['min' => config('settings.min_quantity_product'), 'class' => 'form-control']) !!}
-                        </div>
-                        <div class="form-group col-sm-4">
-                            {!! Form::hidden('product_id', $product->id) !!}
-                                @if ($isOrdered)
-                                    {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart', 'disabled' => 'disabled']) !!}
-                                @else
-                                    {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart']) !!}
-                                @endif
+                        <label> {{ trans('product.quantity') }} </label>
+                        <i>{{ $product->quantity }}</i>
+                        <br>
+                        @if ($product->quantity && $product->status)
+                            {!! Form::open(['route' => 'item.store']) !!}
+                            <div class="form-group col-sm-4">
+                                {!! Form::number('quantity', config('settings.default_quantity'), ['min' => config('settings.min_quantity_product'), 'max' => $product->quantity, 'class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group col-sm-4">
+                                {!! Form::hidden('product_id', $product->id) !!}
+                                    @if ($isOrdered)
+                                        {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart', 'disabled' => 'disabled']) !!}
+                                    @else
+                                        {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart']) !!}
+                                    @endif
+                            </div>
                             {!! Form::close() !!}
-                        </div>
+                        @endif
                         <div class="form-group col-sm-12">
                             <div class="fb-like"
                                 data-href="{{ action('User\ProductController@show',
@@ -83,12 +88,18 @@
                             <div id="comments">
                                 @if ($product->comments->count())
                                     @foreach ($product->comments as $comment)
-                                        <strong> {{ $comment->user->name }} </strong> {{ $comment->created_at->diffForHumans() }}
+                                        <div class="col-md-12">
+                                            <div class="col-md-1">
+                                                <img src="{{ $comment->user->getAvatarPath() }}" class="img-comment">
+                                            </div>
+                                            <div class="col-md-11">
+                                                <strong> {{ $comment->user->name }} </strong> {{ $comment->created_at->diffForHumans() }}
+                                                <br>
+                                                {{ $comment->content }}
+                                                <br><br>
+                                            </div>
                                         <br>
-                                        {{ $comment->content }}
-                                        @if (!$loop->last)
-                                            <br>
-                                        @endif
+                                        </div>
                                     @endforeach
                                 @endif
                             </div>
@@ -97,7 +108,7 @@
                                 <div class="hide" data-route="{{ url('user/comment') }}"></div>
                                 {!! Form::open(['id' => 'formComment']) !!}
                                     @if (!$isRatedProduct)
-                                        <div id="list-rating">
+                                        <div id="list-rating" class="col-md-6 col-md-offset-3">
                                             {!! Form::label('so_bad',  trans('label.rate.so_bad'), ['class' => 'rate']) !!}
                                             {!! Form::radio('rate', config('settings.rate.so_bad')) !!}
                                             {!! Form::label('bad',  trans('label.rate.bad'), ['class' => 'rate']) !!}
@@ -110,7 +121,7 @@
                                             {!! Form::radio('rate', config('settings.rate.excellent')) !!}
                                         </div>
                                     @endif
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 comment-content">
                                         {!! Form::textarea('content', null, [
                                             'class' => 'form-control',
                                             'placeholder' => trans('label.comment_placeholder'),

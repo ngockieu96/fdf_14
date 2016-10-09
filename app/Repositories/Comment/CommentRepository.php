@@ -15,8 +15,10 @@ class CommentRepository extends BaseRepository implements CommentRepositoryInter
 
     public function isRatedProduct($productId)
     {
+        $currentId = auth()->user()->id;
         $countRate = $this->model->where('product_id', $productId)
-            ->where('rate', '<>', config('settings.default_value'))->count();
+            ->where('rate', '<>', config('settings.default_value'))
+            ->where('user_id', $currentId)->count();
 
         return $countRate != config('settings.default_value');
     }

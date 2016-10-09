@@ -29,7 +29,7 @@
                                     <td>{{ $product->price }}</td>
                                     <td>
                                         <div class="col-md-6">
-                                            {!! Form::number('quantity', $listQuantity[$product->id], ['min' => config('settings.min_quantity_order'), 'class' => 'form-control', 'id' => 'quantity' . $product->id]) !!}
+                                            {!! Form::number('quantity', $listQuantity[$product->id], ['min' => config('settings.min_quantity_order'), 'max' => $product->quantity, 'class' => 'form-control', 'id' => 'quantity' . $product->id]) !!}
                                         </div>
                                         <div class="col-md-6" data-product-id="{{ $product->id }}" data-price="{{ $product->price }}">
                                             {!! Form::button(trans('cart.update'), ['class' => 'form-control updateCart']) !!}

@@ -26,7 +26,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = $this->productRepository->findProductById($id);
-        $isRatedProduct = $this->commentRepository->isRatedProduct($id);
+        $isRatedProduct = auth()->check() ? $this->commentRepository->isRatedProduct($id) : false;
         $product->view_count += config('settings.increate_view');
         $product->save();
         $isOrdered = false;

@@ -29,8 +29,9 @@ $(document).ready(function(){
             },
             success: function(data){
                 if (data.success) {
-                    var html = '<br>' + '<strong>' + data.user + '</strong>' +
-                        ' ' + data.created_at + '<br>' + data.content;
+                    var html = "<div class='col-md-12'> <div class='col-md-1'>" + '<img src=' + data.avatarPath +
+                        " class='img-comment'>" + '</div>' + "<div class='col-md-11'>" + '<strong>' + data.user +
+                        '</strong>' + ' ' + data.created_at + '<br>' + data.content + '</div><br><br><br></div>';
                     $('#comments').append(html);
                     $('#content' + productId).val('');
                     $('#rate-average').html(data.rate_average);

@@ -48,6 +48,7 @@ class CommentController extends Controller
                     'created_at' => $comment->created_at->diffForHumans(),
                     'rate_average' => $currentProduct->rate_average,
                     'rate_count' => $currentProduct->rate_count,
+                    'avatarPath' => auth()->user()->getAvatarPath(),
                 ];
             } catch (Exception $e) {
                 $result = [

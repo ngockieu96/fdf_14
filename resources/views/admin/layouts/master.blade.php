@@ -75,7 +75,7 @@
     <!-- Content -->
     <div class="col-lg-10">
         <div class="row" id="content">
-            <div class="col-lg-10 col-lg-offset-1 panel panel-primary">
+            <div class="col-lg-11 col-lg-offset-0 panel panel-primary">
                 <div class="panel-heading">
                     <h2> @yield('head') </h2>
                 </div>
