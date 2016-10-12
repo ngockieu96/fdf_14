@@ -28,4 +28,9 @@ class Suggestion extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getImagePath()
+    {
+        return asset('/' . config('settings.suggestion_image_path') . '/' . $this->image);
+    }
 }

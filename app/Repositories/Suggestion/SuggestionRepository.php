@@ -31,4 +31,24 @@ class SuggestionRepository extends BaseRepository implements SuggestionRepositor
 
         return $data;
     }
+
+    public function update($inputs, $id)
+    {
+        if (isset($inputs['image'])) {
+            $file = Input::file('image');
+            $fileName = uniqid(time(), true) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path(config('settings.suggestion_image_path')), $fileName);
+            $inputs['image'] = $fileName;
+        } else {
+            unset($inputs['image']);
+        }
+
+        $data = $this->model->where('id', $id)->update($inputs);
+
+        if (!$data) {
+            throw new Exception(trans('message.update_error'));
+        }
+
+        return $data;
+    }
 }

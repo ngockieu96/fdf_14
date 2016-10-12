@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('user', 'Admin\UsersController');
     Route::resource('product', 'Admin\ProductController');
     Route::resource('order', 'Admin\OrderController');
+    Route::resource('admin-suggestion', 'Admin\SuggestionController');
 });
 
 Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()
@@ -59,7 +60,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function()
     Route::resource('comment', 'User\CommentController', [
          'only' => ['store']
     ]);
-    Route::resource('suggestion', 'User\SuggestionController', [
+    Route::resource('user-suggestion', 'User\SuggestionController', [
         'only' => ['index', 'store']
     ]);
 });

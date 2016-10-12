@@ -73,4 +73,9 @@ $(document).ready(function(){
             });
         }
     });
+
+    $('.add-to-cart').on('click', function() {
+        this.disabled = true;
+        this.form.submit();
+    });
 });

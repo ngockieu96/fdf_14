@@ -64,7 +64,7 @@
                                     @if ($isOrdered)
                                         {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart', 'disabled' => 'disabled']) !!}
                                     @else
-                                        {!! Form::button(trans('label.add_to_cart'), ['type' => 'submit', 'class' => 'btn btn-success glyphicon glyphicon-shopping-cart']) !!}
+                                        {!! Form::button(trans('label.add_to_cart'), ['class' => 'btn btn-success glyphicon glyphicon-shopping-cart add-to-cart']) !!}
                                     @endif
                             </div>
                             {!! Form::close() !!}

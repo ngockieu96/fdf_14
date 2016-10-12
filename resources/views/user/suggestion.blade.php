@@ -8,7 +8,7 @@
                 <div class="panel-heading">{{ trans('suggestion.suggestion') }}</div>
                 <div class="panel-body">
                     @include('errors.errors')
-                    {!! Form::open(['route' => 'suggestion.store', 'files' => true]) !!}
+                    {!! Form::open(['route' => 'user-suggestion.store', 'files' => true]) !!}
                         <div class="form-group col-sm-6">
                             {!! Form::label('category_id', trans('suggestion.category')) !!}
                             {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}

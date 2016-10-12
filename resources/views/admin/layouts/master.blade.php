@@ -67,6 +67,13 @@
                             </span>
                         </a>
                     </li>
+                    <li class="{{ Request::is('admin/admin-suggestion') ? 'active' : '' }}">
+                        <a href="{{ url('/admin/admin-suggestion') }}">
+                            <span class="glyphicon glyphicon-plus">
+                                {{ trans('label.suggestion') }}
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
