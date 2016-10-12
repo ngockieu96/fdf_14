@@ -62,4 +62,12 @@ return [
     ],
     'suggestion_image_path' => 'uploads/suggestion',
     'product_limit' => '4',
+    'product_status' => [
+        'active' => '1',
+        'disable' => '0',
+    ],
+    'role' => [
+        'admin' => '1',
+        'user' => '0',
+    ],
 ];

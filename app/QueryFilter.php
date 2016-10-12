@@ -18,6 +18,7 @@ abstract class QueryFilter
     public function apply(Builder $builder)
     {
         $this->builder = $builder;
+        $this->builder->where('status', config('settings.product_status.active'));
 
         foreach ($this->inputs() as $name => $value) {
             if (method_exists($this, $name)) {

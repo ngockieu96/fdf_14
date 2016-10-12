@@ -55,7 +55,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li {!! Request::is('user/cart') ? 'class="active"' : '' !!}>
                         <a href="{{ URL::action('User\CartController@index') }}">
                             <button class="btn btn-danger btn-lg">
                             <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -63,12 +63,12 @@
                             </button>
                         </a>
                     </li>
-                    <li>
+                    <li {!! Request::is('user/orders') ? 'class="active"' : '' !!}>
                         <a href="{{ URL::action('User\OrderController@index') }}">
                             {{ trans('label.order_history') }}
                         </a>
                     </li>
-                    <li>
+                    <li {!! Request::is('user/user-suggestion') ? 'class="active"' : '' !!}>
                         <a href="{{ URL::action('User\SuggestionController@index') }}">
                             {{ trans('label.suggestion') }}
                         </a>

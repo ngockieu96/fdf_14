@@ -64,8 +64,8 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <a href="{{ URL::previous() }}" class="btn btn-default">{{ trans('product.back') }}</a>
                     </div>
-                    <a href="{{ URL::previous() }}" class="btn btn-default">{{ trans('product.back') }}</a>
                 </div>
             </div>
         </div>

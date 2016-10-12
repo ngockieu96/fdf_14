@@ -47,4 +47,5 @@ return [
     'delete_order_fail' => 'Order delete fail',
     'order_not_found' => 'Not Found Order History',
     'order_successfully' => 'You order successfully',
+    'no' => 'No',
 ];

@@ -39,35 +39,35 @@
                     <a class="navbar-brand" href="{{ url('/home') }}">{{ trans('label.app_name') }}</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="{{ Request::is('admin/category') ? 'active' : '' }}">
+                    <li {!! Request::is('admin/category') ? 'class="active"' : '' !!}>
                         <a href="{{ url('/admin/category') }}">
                             <span class="glyphicon glyphicon-th-list">
                                 {{ trans('label.category') }}
                             </span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('admin/user') ? 'active' : '' }}">
+                    <li {!! Request::is('admin/user') ? 'class="active"' : '' !!}>
                         <a href="{{ url('/admin/user') }}">
                             <span class="glyphicon glyphicon-user">
                                 {{ trans('label.user') }}
                             </span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('admin/product') ? 'active' : '' }}">
+                    <li {!! Request::is('admin/product') ? 'class="active"' : '' !!}>
                         <a href="{{ url('/admin/product') }}">
                             <span class="glyphicon glyphicon-book">
                                 {{ trans('label.product') }}
                             </span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('admin/order') ? 'active' : '' }}">
+                    <li {!! Request::is('admin/order') ? 'class="active"' : '' !!}>
                         <a href="{{ url('/admin/order') }}">
                             <span class="glyphicon glyphicon-credit-card">
                                 {{ trans('label.order') }}
                             </span>
                         </a>
                     </li>
-                    <li class="{{ Request::is('admin/admin-suggestion') ? 'active' : '' }}">
+                    <li {!! Request::is('admin/admin-suggestion') ? 'class="active"' : '' !!}>
                         <a href="{{ url('/admin/admin-suggestion') }}">
                             <span class="glyphicon glyphicon-plus">
                                 {{ trans('label.suggestion') }}

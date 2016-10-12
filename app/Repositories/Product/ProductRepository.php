@@ -14,6 +14,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $this->model = $product;
     }
 
+    public function getActiveProducts()
+    {
+        return $this->model->where('status', config('settings.product_status.active'))->paginate(config('settings.product_limit'));
+    }
+
     public function getListProductByListIds($listIds)
     {
         return $this->model->whereIn('id', $listIds)->get();

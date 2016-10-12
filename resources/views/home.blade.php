@@ -53,7 +53,9 @@
                                         </span>
                                     </label>
                                     <br>
-                                    <img class="img-product" src="{{ $product->getImagePath() }}">
+                                    <a href="{{ URL::action('User\ProductController@show', ['id' => $product->id]) }}">
+                                        <img class="img-product" src="{{ $product->getImagePath() }}">
+                                    </a>
                                     <br>
                                     <a class="btn btn-infor" href="{{ URL::action('User\ProductController@show', ['id' => $product->id]) }}">{{ trans('label.view_details') }}</a>
                                 </div>

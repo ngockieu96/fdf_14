@@ -10,7 +10,7 @@
                     @if ($orders->count())
                         <table class="table table-responsive" id="users-table">
                             <thead>
-                                <th>{{ trans('order.id') }}</th>
+                                <th>{{ trans('order.no') }}</th>
                                 <th>{{ trans('order.transaction_date') }}</th>
                                 <th>{{ trans('order.total') }}</th>
                                 <th>{{ trans('order.status') }}</th>
@@ -19,7 +19,7 @@
                             <tbody>
                             @foreach ($orders as $order)
                                 <tr>
-                                    <td>{{ $order->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $order->created_at }}</td>
                                     <td>{{ $order->price }}</td>
                                     <td>
